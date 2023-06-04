@@ -8,7 +8,7 @@ import DashboardLayout from '../../layouts/Dashboard';
 export default function Home() {
 
   return (
-    <DashboardLayout background={eventInfo.backgroundImageUrl}>
+    <DashboardLayout background={'img/Logo_mylink/claro_ico.png'}>
       <NavigationBar />
 
       <Container>

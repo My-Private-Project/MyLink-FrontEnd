@@ -37,9 +37,9 @@ export default function SignIn() {
   } 
 
   return (
-    <AuthLayout background={eventInfo.backgroundImageUrl}>
+    <AuthLayout background={'img/Logo_mylink/claro_ico.png'}>
       <Row>
-        <img src={vazio} alt="Event Logo" width="60px" />
+        <img src={"img/Logo_mylink/claro_ico.png"} alt="Event Logo" width="60px" />
         <Title>Exemplo</Title>
       </Row>
       <Row>

@@ -9,8 +9,6 @@ import Button from '../../components/Form/Button';
 import { Row, Title, Label } from '../../components/Auth';
 import Link from '../../components/Link';
 
-import EventInfoContext from '../../contexts/EventInfoContext';
-
 import useSignUp from '../../hooks/api/useSignUp';
 
 export default function SignUp() {
@@ -21,8 +19,6 @@ export default function SignUp() {
   const { loadingSignUp, signUp } = useSignUp();
 
   const navigate = useNavigate();
-  
-  const { eventInfo } = useContext(EventInfoContext);
 
   async function submit(event) {
     event.preventDefault();
@@ -41,10 +37,10 @@ export default function SignUp() {
   }
 
   return (
-    <AuthLayout background={eventInfo.backgroundImageUrl}>
+    <AuthLayout background={"img/Logo_mylink/claro_ico.png"}>
       <Row>
-        <img src={eventInfo.logoImageUrl} alt="Event Logo" width="60px" />
-        <Title>{eventInfo.title}</Title>
+        <img src={"img/Logo_mylink/claro_ico.png"} alt="Event Logo" width="60px" />
+        <Title>{"MyLink"}</Title>
       </Row>
       <Row>
         <Label>Inscrição</Label>

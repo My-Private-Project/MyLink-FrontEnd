@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import { UserProvider } from "./contexts/UserContext";
 
 import useToken from "./hooks/useToken";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
@@ -27,7 +28,7 @@ export default function App() {
               path="/"
               element={
                 <ProtectedRouteGuard>
-                  <Home/>
+                  <Home />
                 </ProtectedRouteGuard>
               }
             ></Route>
