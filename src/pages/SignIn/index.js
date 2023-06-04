@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import AuthLayout from '../../layouts/Auth';
 
+import Button from '../../components/Form/Button';
 import Input from '../../components/Form/Input';
 import Link from '../../components/Link';
 import { Row, Label, RowImage } from '../../components/Auth';
@@ -13,7 +14,6 @@ import UserContext from '../../contexts/UserContext';
 import useSignIn from '../../hooks/api/useSignIn';
 
 import myLinkLogoClaro from '../../assets/img/claro.png';
-import Button from '../../components/Form/Button';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -39,7 +39,7 @@ export default function SignIn() {
   } 
 
   return (
-    <AuthLayout>
+    <AuthLayout background={`#000000`}>
       <RowImage>
         <img src={myLinkLogoClaro} alt="Event Logo" />
       </RowImage>

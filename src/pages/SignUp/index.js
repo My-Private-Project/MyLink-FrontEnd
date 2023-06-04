@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,8 +6,10 @@ import AuthLayout from '../../layouts/Auth';
 
 import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
-import { Row, Title, Label } from '../../components/Auth';
+import { Row, Label, RowImage } from '../../components/Auth';
 import Link from '../../components/Link';
+
+import myLinkLogoClaro from '../../assets/img/claro.png';
 
 import useSignUp from '../../hooks/api/useSignUp';
 
@@ -37,18 +39,17 @@ export default function SignUp() {
   }
 
   return (
-    <AuthLayout background={"img/Logo_mylink/claro_ico.png"}>
+    <AuthLayout background={`#000000`}>
+      <RowImage>
+        <img src={myLinkLogoClaro} alt="Event Logo" />
+      </RowImage>
       <Row>
-        <img src={"img/Logo_mylink/claro_ico.png"} alt="Event Logo" width="60px" />
-        <Title>{"MyLink"}</Title>
-      </Row>
-      <Row>
-        <Label>Inscrição</Label>
+        <Label>Cadastro</Label>
         <form onSubmit={submit}>
           <Input label="E-mail" type="text" fullWidth value={email} onChange={e => setEmail(e.target.value)} />
           <Input label="Senha" type="password" fullWidth value={password} onChange={e => setPassword(e.target.value)} />
           <Input label="Repita sua senha" type="password" fullWidth value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
-          <Button type="submit" color="primary" fullWidth disabled={loadingSignUp}>Inscrever</Button>
+          <Button type="submit" color="primary" disabled={loadingSignUp}>Cadastrar-se</Button>
         </form>
       </Row>
       <Row>
