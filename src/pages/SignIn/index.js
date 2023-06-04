@@ -5,13 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import AuthLayout from '../../layouts/Auth';
 
 import Input from '../../components/Form/Input';
-import Button from '../../components/Form/Button';
 import Link from '../../components/Link';
-import { Row, Title, Label } from '../../components/Auth';
+import { Row, Label, RowImage } from '../../components/Auth';
 
 import UserContext from '../../contexts/UserContext';
 
 import useSignIn from '../../hooks/api/useSignIn';
+
+import myLinkLogoClaro from '../../assets/img/claro.png';
+import Button from '../../components/Form/Button';
 
 export default function SignIn() {
   const [email, setEmail] = useState('');
@@ -37,21 +39,20 @@ export default function SignIn() {
   } 
 
   return (
-    <AuthLayout background={'img/Logo_mylink/claro_ico.png'}>
+    <AuthLayout>
+      <RowImage>
+        <img src={myLinkLogoClaro} alt="Event Logo" />
+      </RowImage>
       <Row>
-        <img src={"img/Logo_mylink/claro_ico.png"} alt="Event Logo" width="60px" />
-        <Title>Exemplo</Title>
-      </Row>
-      <Row>
-        <Label>Entrar</Label>
+        <Label></Label>
         <form onSubmit={submit}>
           <Input label="E-mail" type="text" fullWidth value={email} onChange={e => setEmail(e.target.value)} />
           <Input label="Senha" type="password" fullWidth value={password} onChange={e => setPassword(e.target.value)} />
-          <Button type="submit" color="primary" fullWidth disabled={loadingSignIn}>Entrar</Button>
+          <Button type="submit" color="primary" disabled={loadingSignIn}>ENTRAR</Button>
         </form>
       </Row>
       <Row>
-        <Link to="/enroll">Não possui login? Inscreva-se</Link>
+        <Link to="/sign-up">Não possui login? Inscreva-se</Link>
       </Row>
     </AuthLayout>
   );
