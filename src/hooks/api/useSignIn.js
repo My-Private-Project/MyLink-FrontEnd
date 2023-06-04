@@ -1,6 +1,6 @@
 import useAsync from '../useAsync';
 
-import * as authApi from '../../services/authApi';
+import * as authApi from '../../services/signInApi';
 
 export default function useSignUp() {
   const {
