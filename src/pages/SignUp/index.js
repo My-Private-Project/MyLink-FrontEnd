@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-import AuthLayout from '../../layouts/Auth';
+import { SignUpLayout } from '../../layouts/Auth';
 
 import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
@@ -14,6 +14,7 @@ import myLinkLogoClaro from '../../assets/img/claro.png';
 import useSignUp from '../../hooks/api/useSignUp';
 
 export default function SignUp() {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -29,7 +30,7 @@ export default function SignUp() {
       toast('As senhas devem ser iguais!');
     } else {
       try {
-        await signUp(email, password);
+        await signUp(name, email, password);
         toast('Inscrito com sucesso! Por favor, faça login.');
         navigate('/sign-in');
       } catch (error) {
@@ -39,13 +40,14 @@ export default function SignUp() {
   }
 
   return (
-    <AuthLayout background={`#000000`}>
+    <SignUpLayout background={`#000000`}>
       <RowImage>
         <img src={myLinkLogoClaro} alt="Event Logo" />
       </RowImage>
       <Row>
         <Label>Cadastro</Label>
         <form onSubmit={submit}>
+          <Input label="Nome" type="text" fullWidth value={name} onChange={e => setName(e.target.value)} />
           <Input label="E-mail" type="text" fullWidth value={email} onChange={e => setEmail(e.target.value)} />
           <Input label="Senha" type="password" fullWidth value={password} onChange={e => setPassword(e.target.value)} />
           <Input label="Repita sua senha" type="password" fullWidth value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
@@ -55,6 +57,6 @@ export default function SignUp() {
       <Row>
         <Link to="/sign-in">Já está inscrito? Faça login</Link>
       </Row>
-    </AuthLayout>
+    </SignUpLayout>
   );
 }

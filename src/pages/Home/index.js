@@ -1,16 +1,14 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
-import NavigationBar from '../../components/Dashboard/NavigationBar';
-
 import DashboardLayout from '../../layouts/Dashboard';
+import { Title } from '../../components/Auth';
 
 export default function Home() {
 
   return (
     <DashboardLayout background={'#000000'}>
-      <NavigationBar />
-
+      <Title>Já já estará disponível ;)</Title>
       <Container>
         <Outlet />
       </Container>

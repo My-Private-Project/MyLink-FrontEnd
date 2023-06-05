@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-import AuthLayout from '../../layouts/Auth';
+import { SignInLayout } from '../../layouts/Auth';
 
 import Button from '../../components/Form/Button';
 import Input from '../../components/Form/Input';
@@ -32,19 +32,18 @@ export default function SignIn() {
       const userData = await signIn(email, password);
       setUserData(userData);
       toast('Login realizado com sucesso!');
-      navigate('/dashboard');
+      navigate('/');
     } catch (err) {
       toast('Não foi possível fazer o login!');
     }
   } 
 
   return (
-    <AuthLayout background={`#000000`}>
+    <SignInLayout background={`#000000`}>
       <RowImage>
         <img src={myLinkLogoClaro} alt="Event Logo" />
       </RowImage>
       <Row>
-        <Label></Label>
         <form onSubmit={submit}>
           <Input label="E-mail" type="text" fullWidth value={email} onChange={e => setEmail(e.target.value)} />
           <Input label="Senha" type="password" fullWidth value={password} onChange={e => setPassword(e.target.value)} />
@@ -54,6 +53,6 @@ export default function SignIn() {
       <Row>
         <Link to="/sign-up">Não possui login? Inscreva-se</Link>
       </Row>
-    </AuthLayout>
+    </SignInLayout>
   );
 }
