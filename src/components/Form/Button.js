@@ -13,4 +13,7 @@ const StyledMuiButton = styled(MuiButton)`
   margin-top: 20px !important;
   width: 200px;
   background: #4080F5 !important;
+  font-family: 'Open Sans' !important;
+  font-weight: 700 !important;
+  border-radius: 10px !important;
 `;

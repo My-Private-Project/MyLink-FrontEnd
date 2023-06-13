@@ -1,10 +1,11 @@
-import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
 import HomeLayout from '../../layouts/Home';
 import { FaUser, FaLayerGroup, FaPlusCircle } from 'react-icons/fa';
 
 import myLinkLogoClaro from '../../assets/img/claro.png';
+import { Label } from '../../components/Home';
+import Button from '../../components/Form/Button';
 
 export default function Home() {
 
@@ -25,8 +26,11 @@ export default function Home() {
         </Right>
       </Menu>
       <Container>
-        <Top></Top>
-        <Link/>
+        <Top>
+          <Label>LINKS</Label>
+          <Line/>
+          <Button color="primary" onClick={active}>Criar link</Button>
+        </Top>
       </Container>
     </HomeLayout>
   );
@@ -37,13 +41,28 @@ const Space = styled.div`
   height: 50px;
   margin: 0px 15px;
 `;
+
+const Line = styled.div`
+  width: 100%;
+  height: 1px; 
+  margin: 10px;
+  background-color: gray;
+`;
+
+const Top = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 const Container = styled.div`
-  padding: 30px;
+  padding: 10px 30px;
   margin-top: 100px;
-  height: 100px;
+  height: 100%;
   width: 1040px;
   overflow-y: auto;
-  background-color: red;
   border-radius: 10px;
 
   @media (max-width: 600px) {

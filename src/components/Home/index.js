@@ -34,3 +34,11 @@ export const Page = styled.div`
   }
 `;
 
+export const Label = styled.h2`
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: #FFFFFF;
+`;
+

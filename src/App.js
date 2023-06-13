@@ -24,10 +24,15 @@ export default function App() {
           <Routes>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
-            <ProtectedRouteGuard>
-            <Route path="/" element={<Home />}/>
-            <Route path="/creator" element={<Creator />}/>
-            </ProtectedRouteGuard>
+            
+            <Route path="/" element={
+              <ProtectedRouteGuard>
+                <Home />
+              </ProtectedRouteGuard>
+              }>
+                
+                <Route path="/creator" element={<Creator />}/>
+            </Route>
           </Routes>
         </Router>
       </UserProvider>
