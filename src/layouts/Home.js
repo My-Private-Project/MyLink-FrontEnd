@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
-import Page from '../components/Page';
-import { StyledContainer as Container } from '../components/Auth';
+import { StyledContainer as Container } from '../components/Home';
+import { Page } from '../components/Home';
 
-export default function Dashboard({ background, children }) {
+export default function Home({ background, children }) {
   return (
     <Page background={background}>
-      <StyledContainer width="1040px" height="100px">
-        {children}
+      <StyledContainer width="100%" height="70px">
+        {children[0]}
       </StyledContainer>
+      {children[1]}
     </Page>
   );
 }
@@ -18,6 +19,8 @@ const StyledContainer = styled(Container)`
   justify-content: center;
   align-items: center;
   padding: 0;
+  position: fixed;
+  border-radius: 0px;
   
   & > * {
     text-align: initial;

@@ -2,12 +2,12 @@ import { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-import { SignInLayout } from '../../layouts/Auth';
+import { SignInLayout } from '../../layouts/User';
 
 import Button from '../../components/Form/Button';
 import Input from '../../components/Form/Input';
 import Link from '../../components/Link';
-import { Row, Label, RowImage } from '../../components/Auth';
+import { Row, Label, RowImage } from '../../components/User';
 
 import UserContext from '../../contexts/UserContext';
 
@@ -41,7 +41,7 @@ export default function SignIn() {
   return (
     <SignInLayout background={`#000000`}>
       <RowImage>
-        <img src={myLinkLogoClaro} alt="Event Logo" />
+        <img src={myLinkLogoClaro} alt="Logo MyLink" />
       </RowImage>
       <Row>
         <form onSubmit={submit}>

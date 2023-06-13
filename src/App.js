@@ -8,6 +8,7 @@ import {
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Home from "./pages/Home";
+import Creator from "./pages/Creator";
 
 import { UserProvider } from "./contexts/UserContext";
 
@@ -23,15 +24,10 @@ export default function App() {
           <Routes>
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/sign-in" element={<SignIn />} />
-
-            <Route
-              path="/"
-              element={
-                <ProtectedRouteGuard>
-                  <Home />
-                </ProtectedRouteGuard>
-              }
-            ></Route>
+            <ProtectedRouteGuard>
+            <Route path="/" element={<Home />}/>
+            <Route path="/creator" element={<Creator />}/>
+            </ProtectedRouteGuard>
           </Routes>
         </Router>
       </UserProvider>

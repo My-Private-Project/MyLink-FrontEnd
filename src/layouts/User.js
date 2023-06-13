@@ -1,5 +1,5 @@
 import Page from '../components/Page';
-import { StyledContainer } from '../components/Auth';
+import { StyledContainer } from '../components/User';
 
 export function SignInLayout({ background, children }) {
   return (

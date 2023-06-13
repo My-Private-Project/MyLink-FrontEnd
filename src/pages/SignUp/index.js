@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-import { SignUpLayout } from '../../layouts/Auth';
+import { SignUpLayout } from '../../layouts/User';
 
 import Input from '../../components/Form/Input';
 import Button from '../../components/Form/Button';
-import { Row, Label, RowImage } from '../../components/Auth';
+import { Row, Label, RowImage } from '../../components/User';
 import Link from '../../components/Link';
 
 import myLinkLogoClaro from '../../assets/img/claro.png';
