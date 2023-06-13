@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 
 import HomeLayout from '../../layouts/Home';
-import { FaUser, FaLayerGroup, FaPlusCircle } from 'react-icons/fa';
+import { FaSignOutAlt } from 'react-icons/fa';
 
 import myLinkLogoClaro from '../../assets/img/claro.png';
-import { Label } from '../../components/Home';
+import { 
+  Label, 
+  Line,
+  Top,
+  Menu,
+  Right,
+  Left
+} from '../../components/Home';
 import Button from '../../components/Form/Button';
 
 export default function Home() {
@@ -20,9 +27,7 @@ export default function Home() {
           <img src={myLinkLogoClaro} alt="Logo MyLink" />
         </Left>
         <Right>
-          <FaUser color='#000' size={'sm'} onClick={active} cursor={"pointer"}/>
-          <Space/>
-          <FaLayerGroup color='#000' size={'sm'} onClick={active} cursor={"pointer"}/>
+          <FaSignOutAlt color='#4080F5' size={'sm'} onClick={active} cursor={"pointer"}/>
         </Right>
       </Menu>
       <Container>
@@ -35,27 +40,6 @@ export default function Home() {
     </HomeLayout>
   );
 }
-
-const Space = styled.div`
-  width: 1px;
-  height: 50px;
-  margin: 0px 15px;
-`;
-
-const Line = styled.div`
-  width: 100%;
-  height: 1px; 
-  margin: 10px;
-  background-color: gray;
-`;
-
-const Top = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const Container = styled.div`
   padding: 10px 30px;
@@ -70,53 +54,3 @@ const Container = styled.div`
     padding: 20px;
   }
 `;
-
-const Menu = styled.div`
-  width: 100%;
-  height: 50px;
-  padding: 0px 150px;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const Right = styled.div`
-  width: 100px;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-`;
-/*const Center = styled.div`
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  background-color: red;
-  position: absolute;
-  left: 50%;
-  top: 0%;
-`;*/
-const Left = styled.div`
-  width: 150px;
-  height: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  img{
-    width: 200px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
-`;
-
-/*
-<Center>
-  <FaPlusCircle color='#000' size={'sm'}/>
-</Center>
-*/
