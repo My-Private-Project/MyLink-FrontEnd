@@ -7,7 +7,7 @@ import { SignInLayout } from '../../layouts/User';
 import Button from '../../components/Form/Button';
 import Input from '../../components/Form/Input';
 import Link from '../../components/Link';
-import { Row, Label, RowImage } from '../../components/User';
+import { Row, RowImage } from '../../components/User';
 
 import UserContext from '../../contexts/UserContext';
 
