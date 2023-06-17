@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 import { FaPencilAlt, FaTrash } from 'react-icons/fa';
 
-export function StyleLink({name, key, active}) {
+export function StyleLink({name, key, link, active, updateLink, deleteLink}) {
     return (
           <Link key={key}>
             <p onClick={active}>{name}</p>
             <Icons>
-              <FaPencilAlt cursor={'pointer'} onClick={active}/>
+              <FaPencilAlt cursor={'pointer'} onClick={() => updateLink(link.id)}/>
               <Space/>
-              <FaTrash size={'sm'} cursor={'pointer'} onClick={active}/>
+              <FaTrash size={'sm'} cursor={'pointer'} onClick={() => deleteLink(link.id)}/>
             </Icons>
           </Link>
     );

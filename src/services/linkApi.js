@@ -19,3 +19,20 @@ export async function find(token) {
 
   return response.data;
 }
+
+export async function update(body, token) {
+  return await api.put('/home', body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export async function remove(id, token) {
+  console.log(token);
+  return await api.delete(`/home/${id}`,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}

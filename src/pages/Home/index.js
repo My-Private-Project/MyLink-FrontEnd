@@ -18,12 +18,14 @@ import {
 import Button from '../../components/Form/Button';
 import { toast } from 'react-toastify';
 import useToken from '../../hooks/useToken';
-import { create, find } from '../../services/linkApi';
+import { create, find, remove, update } from '../../services/linkApi';
 import { StyleLink } from '../../components/Home/StyleLink';
 
 
 export default function Home() {
   const [links, setLinks] = useState([]);
+  const [modificate, setModificate] = useState(false);
+  const [updateId, setUpdateId] = useState();
   const token = useToken();
 
   function active(){
@@ -35,21 +37,47 @@ export default function Home() {
       .then((res) => {
         console.log(res);
         setLinks(res);
+        setModificate(false);
       })
       .catch((error) => {
         console.log(error);
         if (error.status === 404) setLinks(false);
       });
-  }, []);
+  }, [modificate]);
 
   async function newLink(){
     const name = prompt("Qual o nome do seu link?");
 
     try {
       await create({name}, token);
+      setModificate(true);
       toast('Criação do link realizado com sucesso!');
     } catch (err) {
       toast('Não foi possível criar o link!');
+    }
+  };
+
+  async function updateLink(id){
+    const name = prompt("Qual o nome do seu link?");
+
+    try {
+      await update({id, name}, token);
+      setModificate(true);
+      toast('Você alterou o link com sucesso!');
+    } catch (err) {
+      console.log(err);
+      toast('Não foi possível alterar o link!');
+    }
+  };
+
+  async function deleteLink(id){
+    try {
+      await remove(id, token);
+      setModificate(true);
+      toast('Você deletou o link com sucesso!');
+    } catch (err) {
+      console.log(err);
+      toast('Não foi possível deletar o link!');
     }
   };
 
@@ -71,7 +99,7 @@ export default function Home() {
         </Top>
         <LinkList>
           { links ?
-          links.map((l) => <StyleLink name={l.name} key={l.id} active={active}/>)
+          links.map((l) => <StyleLink name={l.name} key={l.id} link={l} active={active} updateLink={updateLink} deleteLink={deleteLink}/>)
           :
           <Label>Você não possui links ainda... </Label>
           }
