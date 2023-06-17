@@ -29,7 +29,6 @@ export async function update(body, token) {
 }
 
 export async function remove(id, token) {
-  console.log(token);
   return await api.delete(`/home/${id}`,{
     headers: {
       Authorization: `Bearer ${token}`,

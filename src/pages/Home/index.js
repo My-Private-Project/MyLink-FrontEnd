@@ -19,7 +19,7 @@ import Button from '../../components/Form/Button';
 import { toast } from 'react-toastify';
 import useToken from '../../hooks/useToken';
 import { create, find, remove, update } from '../../services/linkApi';
-import { StyleLink } from '../../components/Home/StyleLink';
+import { StyleLink } from '../../components/Home/StyleLink/index';
 
 
 export default function Home() {
@@ -58,7 +58,7 @@ export default function Home() {
   };
 
   async function updateLink(id){
-    const name = prompt("Qual o nome do seu link?");
+    const name = prompt("Qual o novo nome do seu link?");
 
     try {
       await update({id, name}, token);
@@ -98,10 +98,13 @@ export default function Home() {
           <Button color="primary" onClick={newLink}>Criar link</Button>
         </Top>
         <LinkList>
-          { links ?
-          links.map((l) => <StyleLink name={l.name} key={l.id} link={l} active={active} updateLink={updateLink} deleteLink={deleteLink}/>)
+          { !links ?
+          <label>Erro ao trazer os links. Desculpe... </label>
           :
-          <Label>Você não possui links ainda... </Label>
+          links.length === 0 ?
+          <label>Você não possui links ainda... </label>
+          :
+          links.map((l) => <StyleLink name={l.name} key={l.id} link={l} active={active} updateLink={updateLink} deleteLink={deleteLink}/>)
           }
         </LinkList>
       </Container>
@@ -129,4 +132,12 @@ display: flex;
 flex-direction: column;
 align-items: center;
 margin: 10px 0;
+label{
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: #FFFFFF;
+  margin-top: 20px;
+}
 `;
