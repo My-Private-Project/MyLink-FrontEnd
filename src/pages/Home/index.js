@@ -5,6 +5,7 @@ import { FaSignOutAlt } from 'react-icons/fa';
 
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import myLinkLogoClaro from '../../assets/img/claro.png';
 import { 
@@ -25,8 +26,9 @@ import { StyleLink } from '../../components/Home/StyleLink/index';
 export default function Home() {
   const [links, setLinks] = useState([]);
   const [modificate, setModificate] = useState(false);
-  const [updateId, setUpdateId] = useState();
   const token = useToken();
+
+  const navigate = useNavigate();
 
   function active(){
     return alert("Estou ativo!");
@@ -81,6 +83,11 @@ export default function Home() {
     }
   };
 
+  function openCreator(name) {
+    navigate(`/creator/${name}`);
+    return;
+  }
+
   return (
     <HomeLayout background={'#000000'}>
       <Menu>
@@ -104,7 +111,7 @@ export default function Home() {
           links.length === 0 ?
           <label>Você não possui links ainda... </label>
           :
-          links.map((l) => <StyleLink name={l.name} key={l.id} link={l} active={active} updateLink={updateLink} deleteLink={deleteLink}/>)
+          links.map((l) => <StyleLink name={l.name} key={l.id} link={l} openCreator={openCreator} updateLink={updateLink} deleteLink={deleteLink}/>)
           }
         </LinkList>
       </Container>

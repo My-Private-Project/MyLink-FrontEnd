@@ -32,7 +32,7 @@ export default function SignIn() {
       const userData = await signIn(email, password);
       setUserData(userData);
       toast('Login realizado com sucesso!');
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       toast('Não foi possível fazer o login!');
     }
