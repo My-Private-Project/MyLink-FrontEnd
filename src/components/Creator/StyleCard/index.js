@@ -8,7 +8,7 @@ export function StyleCard({name, key, link, updateCard, deleteCard}) {
               {name}
             </a>
             <Icons>
-              <FaPencilAlt cursor={'pointer'} onClick={() => updateCard(link.id)}/>
+              <FaPencilAlt size={'sm'} cursor={'pointer'} onClick={() => updateCard(link.id)}/>
               <Space/>
               <FaTrash size={'sm'} cursor={'pointer'} onClick={() => deleteCard(link.id)}/>
             </Icons>

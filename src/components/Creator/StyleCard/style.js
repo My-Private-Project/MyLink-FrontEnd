@@ -12,7 +12,7 @@ export const Card = styled.li`
   background-color: #fff;
   opacity: 0.8;
 
-  p{
+  a{
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;

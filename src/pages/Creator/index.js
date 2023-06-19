@@ -9,12 +9,32 @@ import useToken from "../../hooks/useToken";
 import { toast } from "react-toastify";
 import Button from "../../components/Form/Button";
 
-import bobesponja from "../../assets/img/Bobesponja.jpeg"
+import bobesponja from "../../assets/img/Bobesponja.jpeg";
 
 export default function Creator() {
   const { name } = useParams();
   const navigate = useNavigate();
-  const [cards, setCards] = useState([]);
+  const [body, setbody] = useState([
+    {
+      id: 1,
+      linkId: 53,
+      imageProfile: bobesponja
+    },
+  ]);
+  const [cards, setCards] = useState([
+    {
+        id: 1,
+        bodyId: 1,
+        name: "Imagem",
+        link: bobesponja,
+      },
+      {
+        id: 2,
+        bodyId: 1,
+        name: "Imagem",
+        link: bobesponja,
+      },
+  ]);
   const [modificate, setModificate] = useState(false);
   const token = useToken();
 
@@ -65,9 +85,11 @@ export default function Creator() {
   return (
     <CreatorLayout background={"#000000"}>
       <Profile>
-        <img src={bobesponja} alt="Imagem de usuário"/>
-        <label onClick={backHome}>DevPhil</label>
-        <Button color="primary" onClick={newCard}>Criar card</Button>
+        <img src={bobesponja} alt="Imagem de usuário" />
+        <label onClick={backHome}>{name}</label>
+        <Button color="primary" onClick={newCard}>
+          Criar card
+        </Button>
       </Profile>
       <Line />
       <CardList>
@@ -108,21 +130,21 @@ const CardList = styled.ul`
 `;
 
 const Profile = styled.div`
-    width: 600px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    img{
-        width: 200px;
-        height: 200px;
-        border-radius: 100px;
-        margin: 20px;
-    }
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin: 20px;
+  }
 
-    label {
+  label {
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 700;
