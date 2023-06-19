@@ -19,6 +19,7 @@ export const Card = styled.li`
     font-size: 18px;
     color: #000000;
     cursor: pointer;
+    text-decoration: none;
   }
   
 `;

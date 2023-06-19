@@ -26,13 +26,13 @@ export default function Creator() {
         id: 1,
         bodyId: 1,
         name: "Imagem",
-        link: bobesponja,
+        link: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstories.recreio.com.br%2Fcoisas-sem-sentindo-em-bob-esponja%2F&psig=AOvVaw3fiCaD2Ge2mwa_4xC9gsrk&ust=1687214538801000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPCc3Izyzf8CFQAAAAAdAAAAABAS",
       },
       {
         id: 2,
         bodyId: 1,
         name: "Imagem",
-        link: bobesponja,
+        link: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstories.recreio.com.br%2Fcoisas-sem-sentindo-em-bob-esponja%2F&psig=AOvVaw3fiCaD2Ge2mwa_4xC9gsrk&ust=1687214538801000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPCc3Izyzf8CFQAAAAAdAAAAABAS",
       },
   ]);
   const [modificate, setModificate] = useState(false);
@@ -102,6 +102,7 @@ export default function Creator() {
             <StyleCard
               name={c.name}
               key={c.id}
+              link={c.link}
               card={c}
               updateCard={updateCard}
               deleteCard={deleteCard}
