@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Label, Line } from "../../components/Creator";
+import { Line } from "../../components/Creator";
 import CreatorLayout from "../../layouts/Creator";
 
 import styled from "styled-components";
