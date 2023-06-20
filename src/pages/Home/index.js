@@ -27,7 +27,6 @@ export default function Home() {
   const [links, setLinks] = useState([]);
   const [modificate, setModificate] = useState(false);
   const token = useToken();
-
   const navigate = useNavigate();
 
   function active(){

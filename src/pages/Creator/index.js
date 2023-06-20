@@ -4,41 +4,36 @@ import CreatorLayout from "../../layouts/Creator";
 
 import styled from "styled-components";
 import { StyleCard } from "../../components/Creator/StyleCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useToken from "../../hooks/useToken";
 import { toast } from "react-toastify";
 import Button from "../../components/Form/Button";
 
 import bobesponja from "../../assets/img/Bobesponja.jpeg";
+import { create, remove, update } from "../../services/cardApi";
+import { find } from "../../services/boyApi";
 
 export default function Creator() {
   const { name } = useParams();
   const navigate = useNavigate();
-  const [body, setbody] = useState([
-    {
-      id: 1,
-      linkId: 53,
-      imageProfile: bobesponja
-    },
-  ]);
-  const [cards, setCards] = useState([
-    {
-        id: 1,
-        bodyId: 1,
-        name: "Imagem",
-        link: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstories.recreio.com.br%2Fcoisas-sem-sentindo-em-bob-esponja%2F&psig=AOvVaw3fiCaD2Ge2mwa_4xC9gsrk&ust=1687214538801000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPCc3Izyzf8CFQAAAAAdAAAAABAS",
-      },
-      {
-        id: 2,
-        bodyId: 1,
-        name: "Imagem",
-        link: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fstories.recreio.com.br%2Fcoisas-sem-sentindo-em-bob-esponja%2F&psig=AOvVaw3fiCaD2Ge2mwa_4xC9gsrk&ust=1687214538801000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPCc3Izyzf8CFQAAAAAdAAAAABAS",
-      },
-  ]);
+  const [body, setbody] = useState({});
+  const [cards, setCards] = useState([]);
   const [modificate, setModificate] = useState(false);
   const token = useToken();
 
-  console.log(name);
+  useEffect(() => {
+    find(name, token)
+      .then((res) => {
+        console.log(res);
+        setbody(res);
+        setCards(res.Cards);
+        setModificate(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.status === 404) setCards(false);
+      });
+  }, [modificate]);
 
   function backHome() {
     navigate("/home");
@@ -49,7 +44,7 @@ export default function Creator() {
     const link = prompt("Para onde seu card leva?");
 
     try {
-      //await create({ name, link }, token);
+      await create({ name, link, bodyId: body.id }, token);
       setModificate(true);
       toast("Criação do card realizada com sucesso!");
     } catch (err) {
@@ -59,10 +54,9 @@ export default function Creator() {
 
   async function updateCard(id) {
     const name = prompt("Qual o novo nome do seu card?");
-    const link = prompt("Para onde seu novo card vai levar?");
 
     try {
-      //await update({ id, name, link }, token);
+      await update({ id, name }, token);
       setModificate(true);
       toast("Você alterou o card com sucesso!");
     } catch (err) {
@@ -73,7 +67,7 @@ export default function Creator() {
 
   async function deleteCard(id) {
     try {
-      //await remove(id, token);
+      await remove(id, token);
       setModificate(true);
       toast("Você deletou o card com sucesso!");
     } catch (err) {
