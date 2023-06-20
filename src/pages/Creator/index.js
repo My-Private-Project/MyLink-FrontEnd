@@ -12,6 +12,7 @@ import Button from "../../components/Form/Button";
 import bobesponja from "../../assets/img/Bobesponja.jpeg";
 import { create, remove, update } from "../../services/cardApi";
 import { find } from "../../services/boyApi";
+import { FaArrowCircleLeft } from "react-icons/fa";
 
 export default function Creator() {
   const { name } = useParams();
@@ -80,7 +81,10 @@ export default function Creator() {
     <CreatorLayout background={"#000000"}>
       <Profile>
         <img src={bobesponja} alt="Imagem de usuário" />
-        <label onClick={backHome}>{name}</label>
+        <label>
+          <FaArrowCircleLeft cursor={'pointer'} onClick={backHome}/>
+          {name}
+        </label>
         <Button color="primary" onClick={newCard}>
           Criar card
         </Button>
